@@ -1,0 +1,53 @@
+/**
+ *
+ * @author Melek Nurten YAVUZ <121044059>
+ * Course :SYSTEM_PROGRAMMING  Date: 29.05.2016
+ */
+             ///////////////////////////////////////////////////////////////////////////////////
+		SYSTEM_PROGRAMMING_FINAL-fileShareServer-client RAPORU
+            ///////////////////////////////////////////////////////////////////////////////////
+            
+/****************************************************/
+/*  fileShareServer.c calisma komutu:                 */
+/* >gcc -c fileShareServer.c                         */
+/* >gcc fileShareServer.o -o fileShareServer        */
+/* >fileShareServer - <portnum>  					*/
+/****************************************************/
+
+/****************************************************/
+/*  client.c calisma komutu:                      */
+/* >gcc -c client.c                           	*/
+/* >gcc client.o -o client              	     */
+/* >./Client -<IP> -<portnum>                    */
+/****************************************************/
+
+PROGRAM DESCRIPTION:
+	 1) Once fileShareServer bir soket açıyor, Client sokete baglaniyor ve PID gonderiyor, baglandigi anda fileShareServer onun  icin özel fork olusturuyor.
+	 2) fileShareServer clienttan komut gelene kadar bekliyor.
+    KOMUTLAR:
+	  listLocal : Clientın bulundugu yerdeki dosyaları listeler.
+	  listServer : serverın bulundugu yerdeki dosyaları listeler.
+	  lsClients :  O an Server a güncel olarak baglı olan clıentları lısteler.
+      sendFile <filename> <clientid> : bır clıent bır clıenta dosya yollar.
+     3) Dosya aktarmasını şöyle yapıyorum: Clıent dosyayı gonderıyor ve server onu Gonderılecek clıenttın ID sı ısmınde kaydedıyor. Her clıent komut beklemeden listServer yapıyor ve dosyalara bakıyor. Dosyaların ıcınde kendı adına .txt varsa bunu alıp kendı loccal dırectorysınde bır dosya olusturuyor.
+     4) Zamanı time.h yardımı ıle aldım.
+     5)  Her iletişim Server tarafından acılan TEK port uzerınden yapılmaktadır.
+	 6) IntegralGen integrale göre islemi yapiyor ve sonucu socket yardimiyla client e iletiyor.
+	 7) client bir clienta dosya yollayacagı zaman server uzerınden yolluyor.
+	 8) fileShareServer ctrl+c gelene kadar  clientlara istek sonucu yollamaya devam ediyor.
+	 9) Client da ctrl+c gelene kadar fileShareServer den gelen sonucu almaya devam ediyor.
+	 10) fileShareServera gelen sýnyal kendýsýný ve tum clýentlarý sırayla olduruyor.
+	 11) clienta gelen sýnyal ýse sadece clientı öldürüyor. Eger 1 istek bıle yapmamıssa ölmüyor,
+	 
+	 OUTPUTS ON TERMINAL:  the time (in milliseconds) and client id when a client is connected, and displays the time and client request
+	 HATALAR: 
+            dosya aktarımı sırasında dosya icerıgının ilk satırında dosya ısımı yazılı kalmıstır. Zaman sıkıntısından dolayı çözümlenemedi.
+        Server ctrl+c ile ölünce client hıcbır ıslem yapmadıysa ölmüyor. Fakat server ölmüş oluyor.
+        
+
+	 
+	 
+	 
+	 
+	 
+	 
